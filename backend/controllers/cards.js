@@ -1,7 +1,7 @@
-const Card = require("../models/Card");
-const { NotFound } = require("../errors/NotFoundError");
-const { BadRequest } = require("../errors/BadRequestError");
-const { Forbidden } = require("../errors/ForbiddenError");
+const Card = require('../models/Card');
+const { NotFound } = require('../errors/NotFoundError');
+const { BadRequest } = require('../errors/BadRequestError');
+const { Forbidden } = require('../errors/ForbiddenError');
 
 const getCards = (_, res, next) => {
   Card.find({})
@@ -23,11 +23,11 @@ const deleteCard = (req, res, next) => {
       if (card.owner.toHexString() !== currentUserId) {
         throw new Forbidden();
       }
-      return card.remove().then(() => res.send({ message: "OK" }));
+      return card.remove().then(() => res.send({ message: 'OK' }));
     })
     .catch((err) => {
-      if (err.kind === "ObjectId") {
-        next(new BadRequest("Id is not correct"));
+      if (err.kind === 'ObjectId') {
+        next(new BadRequest('Id is not correct'));
       }
       next(err);
     });
@@ -42,8 +42,8 @@ const createCard = (req, res, next) => {
       res.status(201).send({ data: card });
     })
     .catch((err) => {
-      if (err.name === "ValidationError") {
-        const fields = Object.keys(err.errors).join(", ");
+      if (err.name === 'ValidationError') {
+        const fields = Object.keys(err.errors).join(', ');
         return next(new BadRequest(`${fields} is not correct`));
       }
       return next(err);
@@ -65,18 +65,18 @@ const updateLikes = (req, res, next, method) => {
       if (!card) {
         throw new NotFound();
       }
-      res.status(200).send({ message: "OK" });
+      res.status(200).send({ message: 'OK' });
     })
     .catch((err) => {
-      if (err.kind === "ObjectId") {
-        next(new BadRequest(`ID is not correct`));
+      if (err.kind === 'ObjectId') {
+        next(new BadRequest('ID is not correct'));
       }
       next(err);
     });
 };
 
-const deleteLike = (req, res, next) => updateLikes(req, res, next, "$pull");
-const setLike = (req, res, next) => updateLikes(req, res, next, "$addToSet");
+const deleteLike = (req, res, next) => updateLikes(req, res, next, '$pull');
+const setLike = (req, res, next) => updateLikes(req, res, next, '$addToSet');
 
 module.exports = {
   getCards,

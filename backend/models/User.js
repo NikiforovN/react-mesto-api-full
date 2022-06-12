@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
-const validator = require("validator");
-const isEmail = require("validator/lib/isEmail");
-const { BadRequest } = require("../errors/BadRequestError");
-const { Unauthorized } = require("../errors/UnauthorizedError");
+const validator = require('validator');
+const isEmail = require('validator/lib/isEmail');
+const { BadRequest } = require('../errors/BadRequestError');
+const { Unauthorized } = require('../errors/UnauthorizedError');
 
 const userSchema = new mongoose.Schema(
   {
@@ -12,17 +12,17 @@ const userSchema = new mongoose.Schema(
       type: String,
       minlength: 2,
       maxlength: 30,
-      default: "Жак-Ив Кусто",
+      default: 'Жак-Ив Кусто',
     },
     about: {
       type: String,
       minlength: 2,
       maxlength: 30,
-      default: "Исследователь",
+      default: 'Исследователь',
     },
     avatar: {
       type: String,
-      default: "https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png",
+      default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
       validate: {
         validator: (v) => validator.isURL(v),
       },
@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
       validate: {
         validator: (v) => isEmail(v),
-        message: "Invalid Email",
+        message: 'Invalid Email',
       },
     },
     password: {
@@ -46,10 +46,10 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.statics.findUserByCredentials = function (email, password) {
-  return this.findOne({ email }, { runValidators: true }).select("+password")
+  return this.findOne({ email }, { runValidators: true }).select('+password')
     .then((user) => {
       if (!email || !password) {
-        return Promise.reject(new BadRequest("email or passwrod is not correct"));
+        return Promise.reject(new BadRequest('email or passwrod is not correct'));
       }
 
       if (!user) {
@@ -59,7 +59,7 @@ userSchema.statics.findUserByCredentials = function (email, password) {
       return bcrypt.compare(password, user.password)
         .then((matched) => {
           if (!matched) {
-            return Promise.reject(new Unauthorized("email or passwrod is not correct"));
+            return Promise.reject(new Unauthorized('email or passwrod is not correct'));
           }
 
           return user;
@@ -67,4 +67,4 @@ userSchema.statics.findUserByCredentials = function (email, password) {
     });
 };
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model('user', userSchema);
