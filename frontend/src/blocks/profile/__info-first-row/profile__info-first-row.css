@@ -1,0 +1,10 @@
+.profile__info-first-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 540px) {
+  .profile__info-first-row {
+    margin-left: 27px;
+  }
+}

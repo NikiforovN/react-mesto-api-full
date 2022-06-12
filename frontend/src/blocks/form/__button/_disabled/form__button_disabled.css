@@ -1,0 +1,9 @@
+.form__button_disabled {
+  opacity: 0.2;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, 1);
+}
+.form__button_disabled:hover {
+  opacity: 0.2;
+}

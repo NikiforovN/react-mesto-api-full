@@ -1,0 +1,16 @@
+.header__link {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 122%;
+  text-align: right;
+  color: #ffffff;
+  align-self: flex-start;
+  margin-top: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .5s;
+  background-color: inherit;
+  border: none;
+  padding: 0;
+}

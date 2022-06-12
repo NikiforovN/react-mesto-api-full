@@ -1,0 +1,11 @@
+.header__name{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 122%;
+    text-align: right;
+    color: #ffffff;
+    align-self: flex-start;
+    margin: 6px 24px 0 0;
+
+}

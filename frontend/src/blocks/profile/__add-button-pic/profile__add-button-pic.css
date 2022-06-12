@@ -1,0 +1,8 @@
+.profile__add-button-pic {
+  max-width: 22px;
+}
+@media screen and (max-width: 540px) {
+  .profile__add-button-pic {
+    max-width: 18px;
+  }
+}

@@ -1,0 +1,8 @@
+.form__field_difference_autorization {
+  color: #fff;
+  border-bottom: 2px solid rgba(204, 204, 204, 1);
+  background-color: #000;
+}
+.form__field_difference_autorization:focus {
+  background-color: #000;
+}
