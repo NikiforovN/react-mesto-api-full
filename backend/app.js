@@ -14,7 +14,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const allowedCors = [
   'http://mesto.nikiforovnd.nomoredomains.xyz',
   'https://mesto.nikiforovnd.nomoredomains.xyz',
-  'localhost:3000',
+  'http://localhost:3000',
 ];
 
 const app = express();
@@ -22,8 +22,6 @@ const app = express();
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
 app.use(express.json());
-
-app.use(requestLogger);
 
 app.use((req, res, next) => {
   const { origin } = req.headers;
@@ -35,6 +33,8 @@ app.use((req, res, next) => {
 
   next();
 });
+
+app.use(requestLogger);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
