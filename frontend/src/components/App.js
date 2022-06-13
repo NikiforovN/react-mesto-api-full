@@ -48,8 +48,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [regisryState, setRegisryState] = React.useState(false);
 
-  console.log('currentUser App', currentUser)
-
   const history = useHistory();
 
   React.useEffect(() => {

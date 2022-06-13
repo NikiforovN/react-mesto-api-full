@@ -9,7 +9,6 @@ function Main(props) {
   const userInfo = React.useContext(UserInfo);
   const cardsInfo = React.useContext(Cards);
 
-  console.log('Main context',userInfo)
 
   return (
     <main>
