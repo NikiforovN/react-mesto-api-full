@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors, celebrate, Joi } = require('celebrate');
 const validator = require('validator');
-const cors = require('cors');
 const {
   addUser,
   login,
@@ -16,6 +15,10 @@ const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
+app.use(express.json());
+
+app.use(requestLogger);
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -23,10 +26,6 @@ app.use((req, res, next) => {
 
   next();
 });
-
-app.use(express.json());
-
-app.use(requestLogger);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
