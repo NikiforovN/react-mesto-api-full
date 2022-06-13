@@ -12,16 +12,11 @@ const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const corsOptions = {
-  origin: ['http://mesto.nikiforovnd.nomoredomains.xyz'],
-  optionsSuccessStatus: 200,
-};
-
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 
