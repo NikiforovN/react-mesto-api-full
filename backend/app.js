@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors, celebrate, Joi } = require('celebrate');
 const validator = require('validator');
+const cors = require('cors');
 const {
   addUser,
   login,
@@ -14,6 +15,8 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
+
+app.use(cors());
 
 app.use(express.json());
 
