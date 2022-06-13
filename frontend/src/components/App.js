@@ -48,6 +48,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [regisryState, setRegisryState] = React.useState(false);
 
+  console.log('currentUser App', currentUser)
+
   const history = useHistory();
 
   React.useEffect(() => {
@@ -205,7 +207,6 @@ function App() {
         }
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
-        console.log(localStorage.getItem('jwt'))
       })
       .catch((err) => {
         console.log(err);
@@ -239,6 +240,11 @@ function App() {
             email: res.email,
             _id: res._id,
           });
+          setCurrentUser({
+            name: res.name,
+            about: res.about,
+            avatar: res.avatar,
+          })
           setIsLoggedIn(true);
         })
         .catch((err) => console.log(err));
@@ -248,6 +254,11 @@ function App() {
   function handleSignOut() {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
+    setCurrentUser({
+      name: "",
+      about: "",
+      avatar: "",
+    })
   }
 
   return (

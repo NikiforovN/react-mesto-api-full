@@ -2,9 +2,8 @@ import React from "react";
 
 function Card(props) {
   const isOwn = props.owner === props.currentUser;
-  console.log(props.likes, props.currentUser)
   const isLiked = props.likes.some((i) => i === props.currentUser);
-  console.log(isLiked)
+
   return (
     <div className="element">
       <img

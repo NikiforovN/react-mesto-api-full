@@ -9,6 +9,8 @@ function Main(props) {
   const userInfo = React.useContext(UserInfo);
   const cardsInfo = React.useContext(Cards);
 
+  console.log('Main context',userInfo)
+
   return (
     <main>
       <section className="profile">
@@ -52,7 +54,6 @@ function Main(props) {
 
       <section className="elements">
         {cardsInfo.map((item) => {
-          console.log(item)
           return (
             <Card
               card={item}
