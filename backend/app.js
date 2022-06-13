@@ -11,6 +11,12 @@ const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+const allowedCors = [
+  'http://mesto.nikiforovnd.nomoredomains.xyz',
+  'https://mesto.nikiforovnd.nomoredomains.xyz',
+  'localhost:3000',
+];
+
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
@@ -20,7 +26,10 @@ app.use(express.json());
 app.use(requestLogger);
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://mesto.nikiforovnd.nomoredomains.xyz');
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
 
