@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors, celebrate, Joi } = require('celebrate');
 const validator = require('validator');
+const cors = require('cors');
 const {
   addUser,
   login,
@@ -11,17 +12,13 @@ const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const allowedCors = [
-  'http://mesto.nikiforovnd.nomoredomains.xyz',
-  'https://mesto.nikiforovnd.nomoredomains.xyz',
-  'http://localhost:3000',
-];
-
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use(requestLogger);
 

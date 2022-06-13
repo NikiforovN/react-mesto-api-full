@@ -22,9 +22,10 @@ export function register({ password, email }) {
 export function authorize({ email, password }) {
   return fetch(`${baseUrl}/signin`, {
     method: 'POST',
-    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify({ email, password })
   })
