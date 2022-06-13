@@ -69,11 +69,11 @@ export class Api {
 }
 
 export const api = new Api({
-  baseUrl: "http://api.mesto.nikiforovnd.nomoreparties.sbs",
+  baseUrl: "https://api.mesto.nikiforovnd.nomoreparties.sbs",
   headers: {
     authorization: `Bearer ${localStorage.getItem('jwt')}`,
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "http://mesto.nikiforovnd.nomoredomains.xyz",
+    "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
   },
