@@ -13,7 +13,7 @@ const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const corsOptions = {
-  origin: 'http://mesto.nikiforovnd.nomoredomains.xyz',
+  origin: ['http://mesto.nikiforovnd.nomoredomains.xyz'],
   optionsSuccessStatus: 200,
 };
 
