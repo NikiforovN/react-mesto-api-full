@@ -52,6 +52,7 @@ function Main(props) {
 
       <section className="elements">
         {cardsInfo.map((item) => {
+          console.log(item)
           return (
             <Card
               card={item}
@@ -59,7 +60,7 @@ function Main(props) {
               name={item.name}
               key={item._id}
               likes={item.likes}
-              owner={item.owner._id}
+              owner={item.owner}
               currentUser={userInfo._id}
               onCardClick={props.onImagePopup}
               onCardLike={props.onCardLike}

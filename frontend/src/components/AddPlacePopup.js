@@ -10,6 +10,7 @@ function AddPlacePopup(props) {
   React.useEffect(() => {
     setName(name);
     setLink(link);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.cards]);
 
   function handleNameChange(event) {

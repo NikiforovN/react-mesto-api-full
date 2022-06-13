@@ -39,7 +39,7 @@ const createCard = (req, res, next) => {
 
   Card.create({ name, link, owner: id })
     .then((card) => {
-      res.status(201).send({ data: card });
+      res.status(201).send(card);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -65,7 +65,7 @@ const updateLikes = (req, res, next, method) => {
       if (!card) {
         throw new NotFound();
       }
-      res.status(200).send({ message: 'OK' });
+      res.status(200).send(card);
     })
     .catch((err) => {
       if (err.kind === 'ObjectId') {

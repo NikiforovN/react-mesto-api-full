@@ -1,4 +1,4 @@
-const baseUrl = "https://api.mesto.nikiforovnd.nomoreparties.sbs";
+const baseUrl = "http://api.mesto.nikiforovnd.nomoreparties.sbs";
 
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(res.status);

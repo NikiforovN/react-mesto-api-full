@@ -69,9 +69,9 @@ export class Api {
 }
 
 export const api = new Api({
-  baseUrl: "https://api.mesto.nikiforovnd.nomoreparties.sbs",
+  baseUrl: "http://api.mesto.nikiforovnd.nomoreparties.sbs",
   headers: {
-    authorization: `${localStorage.getItem('jwt')}`,
+    authorization: `Bearer ${localStorage.getItem('jwt')}`,
     "Content-Type": "application/json",
   },
 });

@@ -60,6 +60,7 @@ function App() {
       return;
     }
     history.push("/register");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn]);
 
   React.useEffect(() => {
@@ -152,7 +153,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
 
     if (isLiked) {
       api
@@ -164,7 +165,7 @@ function App() {
           setCardsInfo(likedCard);
         })
         .catch((err) => {
-          console.log(err.ok);
+          console.log(err);
         });
     } else {
       api
@@ -176,7 +177,7 @@ function App() {
           setCardsInfo(likedCard);
         })
         .catch((err) => {
-          console.log(err.ok);
+          console.log(err);
         });
     }
   }
@@ -190,7 +191,7 @@ function App() {
         closeAllPopups();
       })
       .catch((err) => {
-        console.log(err.ok);
+        console.log(err);
       })
       .finally(() => setIsLoading(false));
   }
@@ -204,6 +205,7 @@ function App() {
         }
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
+        console.log(localStorage.getItem('jwt'))
       })
       .catch((err) => {
         console.log(err);
@@ -234,8 +236,8 @@ function App() {
         .getContent(jwt)
         .then((res) => {
           setUserData({
-            email: res.data.email,
-            _id: res.data._id,
+            email: res.email,
+            _id: res._id,
           });
           setIsLoggedIn(true);
         })
