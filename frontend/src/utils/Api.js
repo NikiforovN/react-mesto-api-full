@@ -72,9 +72,8 @@ export const api = new Api({
   baseUrl: "https://api.mesto.nikiforovnd.nomoreparties.sbs",
   headers: {
     authorization: `Bearer ${localStorage.getItem('jwt')}`,
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Access-Control-Allow-Origin': '*'
   },
 });

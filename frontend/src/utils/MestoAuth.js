@@ -7,12 +7,10 @@ function checkResponse(res) {
 export function register({ password, email }) {
   return fetch(`${baseUrl}/signup`, {
     method: 'POST',
-    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify({ password, email })
   })
@@ -35,13 +33,11 @@ export function authorize({ email, password }) {
 export function getContent(token) {
   return fetch(`${baseUrl}/users/me`, {
     method: 'GET',
-    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     }
   })
     .then(checkResponse)
