@@ -9,7 +9,7 @@ export function register({ password, email }) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      "Access-Control-Allow-Origin": "https://mesto.nikiforovnd.nomoredomains.xyz",
+      "Access-Control-Allow-Origin": "http://mesto.nikiforovnd.nomoredomains.xyz",
       "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
       "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
     },
@@ -23,7 +23,7 @@ export function authorize({ email, password }) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      "Access-Control-Allow-Origin": "https://mesto.nikiforovnd.nomoredomains.xyz",
+      "Access-Control-Allow-Origin": "http://mesto.nikiforovnd.nomoredomains.xyz",
       "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
       "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
     },
@@ -38,7 +38,7 @@ export function getContent(token) {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
-      "Access-Control-Allow-Origin": "https://mesto.nikiforovnd.nomoredomains.xyz",
+      "Access-Control-Allow-Origin": "http://mesto.nikiforovnd.nomoredomains.xyz",
       "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
       "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
     }

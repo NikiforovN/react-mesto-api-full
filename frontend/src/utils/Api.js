@@ -73,7 +73,7 @@ export const api = new Api({
   headers: {
     authorization: `Bearer ${localStorage.getItem('jwt')}`,
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "https://mesto.nikiforovnd.nomoredomains.xyz",
+    "Access-Control-Allow-Origin": "http://mesto.nikiforovnd.nomoredomains.xyz",
     "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
   },
