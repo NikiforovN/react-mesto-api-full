@@ -151,9 +151,10 @@ function App() {
       })
       .finally(() => setIsLoading(false));
   }
+ 
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i === currentUser._id);
+    const isLiked = card.likes.some((i) => i === userData._id);
 
     if (isLiked) {
       api
@@ -252,13 +253,8 @@ function App() {
   function handleSignOut() {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
-    setCurrentUser({
-      name: "",
-      about: "",
-      avatar: "",
-    })
   }
-
+console.log(currentUser)
   return (
     <Switch>
       <UserInfo.Provider value={currentUser}>
@@ -293,6 +289,7 @@ function App() {
               onImagePopup={handleImagePopupOpen}
               onCardLike={handleCardLike}
               onConfirmPopup={handleConfirmPopupOpen}
+              currentUserId={userData._id}
             />
           </ProtectedRoute>
         </Cards.Provider>

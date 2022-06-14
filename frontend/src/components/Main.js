@@ -61,7 +61,7 @@ function Main(props) {
               key={item._id}
               likes={item.likes}
               owner={item.owner}
-              currentUser={userInfo._id}
+              currentUser={props.currentUserId}
               onCardClick={props.onImagePopup}
               onCardLike={props.onCardLike}
               onCardDelete={props.onCardDelete}
