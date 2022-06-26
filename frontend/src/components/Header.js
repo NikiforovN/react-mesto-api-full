@@ -1,36 +1,61 @@
 import React from "react";
-import { Link, useLocation, Switch, Route } from "react-router-dom";
+import { Link, Switch, Route } from "react-router-dom";
 import headerLogo from "../images/header__logo.svg";
-import menuButton from "../images/menu-button.svg";
 
 function Header(props) {
+
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  function toggleBurgerMenu() {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
   return (
     <header className="header">
-      <img src={headerLogo} alt="Логотип Место" className="header__logo" />
+      <Switch>
 
-      <div className="header__container">
-        <Switch>
-          <Route exact path="/">
-            <p className="header__name">{props.userEmail}</p>
-            <button
-              className="header__link buttons-hover"
-              onClick={props.handleSignOut}
-            >
-              Выйти
-            </button>
-          </Route>
-          <Route path="/login">
+        <Route exact path="/">
+          <div className="header__box">
+            <div className={`header__menu ${isMenuOpen && "header__menu_active"}`}>
+              <p className={`header__name ${isMenuOpen && 'header__menu_margins_none'}`}>{props.userEmail}</p>
+              <button
+                className={`header__link buttons-hover  ${isMenuOpen && 'header__menu_margins_none'}`}
+                onClick={props.handleSignOut}
+              >
+                Выйти
+              </button>
+            </div>
+
+            <div className="header__container">
+              <img src={headerLogo} alt="Логотип Место" className="header__logo" />
+              <div className={`header__burger buttons-hover ${isMenuOpen && "header__burger_active"}`} onClick={toggleBurgerMenu}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </Route>
+
+        <Route path="/login">
+          <div className="header__container">
+            <img src={headerLogo} alt="Логотип Место" className="header__logo" />
             <Link to="register" className="header__link buttons-hover">
               Регистрация
             </Link>
-          </Route>
-          <Route path="/register">
+          </div>
+        </Route>
+
+        <Route path="/register">
+          <div className="header__container">
+            <img src={headerLogo} alt="Логотип Место" className="header__logo" />
             <Link to="login" className="header__link buttons-hover">
               Войти
             </Link>
-          </Route>
-        </Switch>
-      </div>
+          </div>
+        </Route>
+
+      </Switch>
     </header>
   );
 }

@@ -5,7 +5,7 @@
   line-height: 122%;
   text-align: right;
   color: #ffffff;
-  align-self: flex-start;
+  /*align-self: flex-start;*/
   margin-top: 6px;
   text-decoration: none;
   cursor: pointer;
@@ -13,4 +13,10 @@
   background-color: inherit;
   border: none;
   padding: 0;
+}
+
+@media screen and (max-width:760px) {
+  .header__link{
+    margin-right: 27px;
+  }
 }

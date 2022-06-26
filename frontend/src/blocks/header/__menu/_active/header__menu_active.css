@@ -1,0 +1,8 @@
+.header__menu_active{
+    display: flex;
+    flex-direction: column;
+    padding: 45px 0;
+    width: 100%;
+}
+
+

@@ -1,0 +1,12 @@
+.header__box{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media screen and (max-width:760px) {
+    .header__box{
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,39 @@
+.header__burger{
+    width: 24px;
+	height: 24px;
+	position: relative;
+	z-index:2;
+	overflow: hidden;
+    transition: .5s;
+    display: none;
+}
+
+.header__burger span{
+    width: 24px;
+	height: 3px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	transition: all 0.5s;
+}
+.header__burger span:nth-of-type(2) {
+	top: calc(50% - 9px);
+}
+.header__burger span:nth-of-type(3) {
+	top: calc(50% + 9px);
+}
+
+@media screen and (max-width:760px) {
+    .header__burger{
+        display: flex;
+    }
+}
+
+@media screen and (max-width:540px) {
+    .header__burger{
+       margin-right: 27px;
+    }
+}
+
